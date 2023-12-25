@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9F9FAF09-75A4-42C8-BA2A-9340AC507AC0}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtInstall>6.4.0_msvc2019_64</QtInstall>
+    <QtModules>core;gui;widgets</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtInstall>6.4.0_msvc2019_64</QtInstall>
+    <QtModules>core;gui;widgets;opengl</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+    <QMakeCodeLines>QT += openglwidgets</QMakeCodeLines>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+    <Import Project="PCL_Debug_x64.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+    <Import Project="PCL_Release_x64.props" />
+    <Import Project="MeckEye_Release_X64.props" />
+    <Import Project="OpenCV47_X64_Release.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="BOX3DDlg.cpp" />
+    <ClCompile Include="Circle2DDlg.cpp" />
+    <ClCompile Include="Circle3DDlg.cpp" />
+    <ClCompile Include="ConditionalDlg.cpp" />
+    <ClCompile Include="ConeDlg.cpp" />
+    <ClCompile Include="CylinderDlg.cpp" />
+    <ClCompile Include="Depth2CloudDlg.cpp" />
+    <ClCompile Include="DepthMapDlg.cpp" />
+    <ClCompile Include="ECEDlg.cpp" />
+    <ClCompile Include="GenerateDlg.cpp" />
+    <ClCompile Include="GP3Dlg.cpp" />
+    <ClCompile Include="ICPDlg.cpp" />
+    <ClCompile Include="IntegralImageDlg.cpp" />
+    <ClCompile Include="LineDlg.cpp" />
+    <ClCompile Include="NARFKeyPointDlg.cpp" />
+    <ClCompile Include="NDTDlg.cpp" />
+    <ClCompile Include="Normal3DDlg.cpp" />
+    <ClCompile Include="PassThroughDlg.cpp" />
+    <ClCompile Include="PlaneDlg.cpp" />
+    <ClCompile Include="PolygonDlg.cpp" />
+    <ClCompile Include="ProjectionDlg.cpp" />
+    <ClCompile Include="QHeightRampDlg.cpp" />
+    <ClCompile Include="RadiusFilterDlg.cpp" />
+    <ClCompile Include="RegionGrowDlg.cpp" />
+    <ClCompile Include="RemoveOutliersDlg.cpp" />
+    <ClCompile Include="SphereDlg.cpp" />
+    <ClCompile Include="TemplateMatchingDlg.cpp" />
+    <ClCompile Include="UniformSamplingDlg.cpp" />
+    <ClCompile Include="UpSamplingDlg.cpp" />
+    <ClCompile Include="VoxelGridDlg.cpp" />
+    <QtRcc Include="PCLvision.qrc" />
+    <QtUic Include="BOX3DDlg.ui" />
+    <QtUic Include="Circle2DDlg.ui" />
+    <QtUic Include="Circle3DDlg.ui" />
+    <QtUic Include="ConditionalDlg.ui" />
+    <QtUic Include="ConeDlg.ui" />
+    <QtUic Include="CylinderDlg.ui" />
+    <QtUic Include="Depth2CloudDlg.ui" />
+    <QtUic Include="DepthMapDlg.ui" />
+    <QtUic Include="ECEDlg.ui" />
+    <QtUic Include="GenerateDlg.ui" />
+    <QtUic Include="GP3Dlg.ui" />
+    <QtUic Include="ICPDlg.ui" />
+    <QtUic Include="IntegralImageDlg.ui" />
+    <QtUic Include="LineDlg.ui" />
+    <QtUic Include="NARFKeyPointDlg.ui" />
+    <QtUic Include="NDTDlg.ui" />
+    <QtUic Include="Normal3DDlg.ui" />
+    <QtUic Include="PassThroughDlg.ui" />
+    <QtUic Include="PCLvision.ui" />
+    <QtMoc Include="PCLvision.h" />
+    <ClCompile Include="PCLvision.cpp" />
+    <ClCompile Include="main.cpp" />
+    <QtUic Include="PlaneDlg.ui" />
+    <QtUic Include="PolygonDlg.ui" />
+    <QtUic Include="ProjectionDlg.ui" />
+    <QtUic Include="QHeightRampDlg.ui" />
+    <QtUic Include="RadiusFilterDlg.ui" />
+    <QtUic Include="RegionGrowDlg.ui" />
+    <QtUic Include="RemoveOutliersDlg.ui" />
+    <QtUic Include="SphereDlg.ui" />
+    <QtUic Include="TemplateMatchingDlg.ui" />
+    <QtUic Include="UniformSamplingDlg.ui" />
+    <QtUic Include="UpSamplingDlg.ui" />
+    <QtUic Include="VoxelGridDlg.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="TemplateMatchingDlg.h" />
+    <QtMoc Include="UpSamplingDlg.h" />
+    <QtMoc Include="UniformSamplingDlg.h" />
+    <QtMoc Include="SphereDlg.h" />
+    <QtMoc Include="VoxelGridDlg.h" />
+    <QtMoc Include="QHeightRampDlg.h" />
+    <QtMoc Include="PassThroughDlg.h" />
+    <QtMoc Include="RemoveOutliersDlg.h" />
+    <QtMoc Include="RadiusFilterDlg.h" />
+    <QtMoc Include="ProjectionDlg.h" />
+    <QtMoc Include="DepthMapDlg.h" />
+    <QtMoc Include="NARFKeyPointDlg.h" />
+    <QtMoc Include="LineDlg.h" />
+    <QtMoc Include="PlaneDlg.h" />
+    <QtMoc Include="Circle2DDlg.h" />
+    <QtMoc Include="Circle3DDlg.h" />
+    <QtMoc Include="CylinderDlg.h" />
+    <QtMoc Include="ConeDlg.h" />
+    <QtMoc Include="ConditionalDlg.h" />
+    <QtMoc Include="Normal3DDlg.h" />
+    <QtMoc Include="IntegralImageDlg.h" />
+    <QtMoc Include="NDTDlg.h" />
+    <QtMoc Include="ICPDlg.h" />
+    <QtMoc Include="ECEDlg.h" />
+    <QtMoc Include="PolygonDlg.h" />
+    <QtMoc Include="GP3Dlg.h" />
+    <QtMoc Include="BOX3DDlg.h" />
+    <QtMoc Include="GenerateDlg.h" />
+    <QtMoc Include="Depth2CloudDlg.h" />
+    <QtMoc Include="RegionGrowDlg.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="PCLvision.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

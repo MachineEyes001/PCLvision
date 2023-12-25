@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Depth2CloudDlgClass</class>
+ <widget class="QWidget" name="Depth2CloudDlgClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>364</width>
+    <height>142</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>从深度图生成点云</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <layout class="QGridLayout" name="gridLayout_5">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>选择深度图：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_13">
+       <property name="text">
+        <string>选择彩色图：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QPushButton" name="BrowseDepth">
+       <property name="minimumSize">
+        <size>
+         <width>80</width>
+         <height>24</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>112</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	color: rgb(0, 0, 0);
+	background-color: rgba(255, 255, 255,0);
+	border:2px outset rgb(100, 100, 100);
+	border-radius:8px;
+  	text-align: center center;
+} 
+
+/*鼠标放在按钮上方*/
+QPushButton:hover:enabled {
+	background-color: rgba(255, 255, 255,150);
+	border:2px outset rgba(100, 100, 100,150);
+} 
+
+/*鼠标点击按钮*/
+QPushButton:pressed:enabled {
+	background-color: rgba(255, 255, 255,255);
+	border:4px outset rgba(100, 100, 100,255);
+}
+
+QPushButton:enabled{ 
+	color: rgb(0, 0, 0);
+	background-color: rgba(255, 255, 255,0);
+	border:2px outset rgb(100, 100, 100);
+}
+
+QPushButton:disabled{ 
+	color: rgb(150, 150, 150);
+	background-color: rgba(150, 150, 150,0);
+	border:2px outset rgb(100, 100, 100);
+}</string>
+       </property>
+       <property name="text">
+        <string>浏览</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="pathDepth">
+       <property name="text">
+        <string>xxx.png</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_14">
+       <property name="text">
+        <string>选择相机参数文件：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="pathRGB">
+       <property name="text">
+        <string>xxx.bmp</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="pathCameraData">
+       <property name="text">
+        <string>3DCameraInCailResult.xml</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QPushButton" name="BrowseRGB">
+       <property name="minimumSize">
+        <size>
+         <width>80</width>
+         <height>24</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>112</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	color: rgb(0, 0, 0);
+	background-color: rgba(255, 255, 255,0);
+	border:2px outset rgb(100, 100, 100);
+	border-radius:8px;
+  	text-align: center center;
+} 
+
+/*鼠标放在按钮上方*/
+QPushButton:hover:enabled {
+	background-color: rgba(255, 255, 255,150);
+	border:2px outset rgba(100, 100, 100,150);
+} 
+
+/*鼠标点击按钮*/
+QPushButton:pressed:enabled {
+	background-color: rgba(255, 255, 255,255);
+	border:4px outset rgba(100, 100, 100,255);
+}
+
+QPushButton:enabled{ 
+	color: rgb(0, 0, 0);
+	background-color: rgba(255, 255, 255,0);
+	border:2px outset rgb(100, 100, 100);
+}
+
+QPushButton:disabled{ 
+	color: rgb(150, 150, 150);
+	background-color: rgba(150, 150, 150,0);
+	border:2px outset rgb(100, 100, 100);
+}</string>
+       </property>
+       <property name="text">
+        <string>浏览</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QPushButton" name="BrowseCameraData">
+       <property name="minimumSize">
+        <size>
+         <width>80</width>
+         <height>24</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>112</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	color: rgb(0, 0, 0);
+	background-color: rgba(255, 255, 255,0);
+	border:2px outset rgb(100, 100, 100);
+	border-radius:8px;
+  	text-align: center center;
+} 
+
+/*鼠标放在按钮上方*/
+QPushButton:hover:enabled {
+	background-color: rgba(255, 255, 255,150);
+	border:2px outset rgba(100, 100, 100,150);
+} 
+
+/*鼠标点击按钮*/
+QPushButton:pressed:enabled {
+	background-color: rgba(255, 255, 255,255);
+	border:4px outset rgba(100, 100, 100,255);
+}
+
+QPushButton:enabled{ 
+	color: rgb(0, 0, 0);
+	background-color: rgba(255, 255, 255,0);
+	border:2px outset rgb(100, 100, 100);
+}
+
+QPushButton:disabled{ 
+	color: rgb(150, 150, 150);
+	background-color: rgba(150, 150, 150,0);
+	border:2px outset rgb(100, 100, 100);
+}</string>
+       </property>
+       <property name="text">
+        <string>浏览</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_ok">
+       <property name="minimumSize">
+        <size>
+         <width>97</width>
+         <height>24</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>97</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	color: rgb(0, 0, 0);
+	background-color: rgba(255, 255, 255,0);
+	border:2px outset rgb(100, 100, 100);
+	border-radius:8px;
+  	text-align: center center;
+} 
+
+/*鼠标放在按钮上方*/
+QPushButton:hover:enabled {
+	background-color: rgba(255, 255, 255,150);
+	border:2px outset rgba(100, 100, 100,150);
+} 
+
+/*鼠标点击按钮*/
+QPushButton:pressed:enabled {
+	background-color: rgba(255, 255, 255,255);
+	border:4px outset rgba(100, 100, 100,255);
+}
+
+QPushButton:enabled{ 
+	color: rgb(0, 0, 0);
+	background-color: rgba(255, 255, 255,0);
+	border:2px outset rgb(100, 100, 100);
+}
+
+QPushButton:disabled{ 
+	color: rgb(150, 150, 150);
+	background-color: rgba(150, 150, 150,0);
+	border:2px outset rgb(100, 100, 100);
+}</string>
+       </property>
+       <property name="text">
+        <string>生成</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_cancel">
+       <property name="minimumSize">
+        <size>
+         <width>97</width>
+         <height>24</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	color: rgb(0, 0, 0);
+	background-color: rgba(255, 255, 255,0);
+	border:2px outset rgb(100, 100, 100);
+	border-radius:8px;
+  	text-align: center center;
+} 
+
+/*鼠标放在按钮上方*/
+QPushButton:hover:enabled {
+	background-color: rgba(255, 255, 255,150);
+	border:2px outset rgba(100, 100, 100,150);
+} 
+
+/*鼠标点击按钮*/
+QPushButton:pressed:enabled {
+	background-color: rgba(255, 255, 255,255);
+	border:4px outset rgba(100, 100, 100,255);
+}
+
+QPushButton:enabled{ 
+	color: rgb(0, 0, 0);
+	background-color: rgba(255, 255, 255,0);
+	border:2px outset rgb(100, 100, 100);
+}
+
+QPushButton:disabled{ 
+	color: rgb(150, 150, 150);
+	background-color: rgba(150, 150, 150,0);
+	border:2px outset rgb(100, 100, 100);
+}</string>
+       </property>
+       <property name="text">
+        <string>取消</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

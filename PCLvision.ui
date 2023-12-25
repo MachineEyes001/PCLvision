@@ -1,0 +1,802 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PCLvisionClass</class>
+ <widget class="QMainWindow" name="PCLvisionClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1460</width>
+    <height>900</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1460</width>
+    <height>900</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>CloudVision</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="minimumSize">
+    <size>
+     <width>900</width>
+     <height>600</height>
+    </size>
+   </property>
+   <widget class="QVTKOpenGLNativeWidget" name="qvtkWidget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>10</y>
+      <width>1121</width>
+      <height>791</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>820</width>
+      <height>490</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>1139</x>
+      <y>9</y>
+      <width>251</width>
+      <height>791</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="lineWidth">
+     <number>2</number>
+    </property>
+    <widget class="QPlainTextEdit" name="infoTextEdit">
+     <property name="geometry">
+      <rect>
+       <x>3</x>
+       <y>3</y>
+       <width>251</width>
+       <height>811</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>16777215</width>
+     <height>60</height>
+    </size>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>40</width>
+     <height>40</height>
+    </size>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_open"/>
+   <addaction name="separator"/>
+   <addaction name="action_save"/>
+   <addaction name="separator"/>
+   <addaction name="action_saveO"/>
+   <addaction name="separator"/>
+   <addaction name="action_Generate"/>
+   <addaction name="separator"/>
+   <addaction name="action_Depth2Cloud"/>
+   <addaction name="separator"/>
+   <addaction name="action_setColor"/>
+   <addaction name="separator"/>
+   <addaction name="action_heightRamp"/>
+   <addaction name="separator"/>
+   <addaction name="action_DepthMap"/>
+   <addaction name="separator"/>
+   <addaction name="action_TemplateMatching"/>
+   <addaction name="separator"/>
+   <addaction name="action_BOX3D"/>
+   <addaction name="separator"/>
+   <addaction name="action_pickPoints"/>
+   <addaction name="separator"/>
+   <addaction name="action_pickArea"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>24</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1460</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>文件</string>
+    </property>
+    <addaction name="action_open"/>
+    <addaction name="action_save"/>
+    <addaction name="action_saveO"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>查看</string>
+    </property>
+    <addaction name="action_setColor"/>
+    <addaction name="action_heightRamp"/>
+    <addaction name="action_DepthMap"/>
+    <addaction name="action_Generate"/>
+    <addaction name="action_Depth2Cloud"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>工具</string>
+    </property>
+    <widget class="QMenu" name="menu_6">
+     <property name="title">
+      <string>滤波</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>image/filter.png</normaloff>image/filter.png</iconset>
+     </property>
+     <addaction name="action_PassThrough"/>
+     <addaction name="action_RemoveOutliers"/>
+     <addaction name="action_RadiusFilter"/>
+     <addaction name="action_Conditional"/>
+     <addaction name="action_VoxelGrid"/>
+     <addaction name="action_UniformSampling"/>
+     <addaction name="action_UpSampling"/>
+     <addaction name="action_Projection"/>
+    </widget>
+    <widget class="QMenu" name="menu_5">
+     <property name="title">
+      <string>关键点</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>image/keypoint.png</normaloff>image/keypoint.png</iconset>
+     </property>
+     <addaction name="action_NARFKeyPoint"/>
+    </widget>
+    <widget class="QMenu" name="menuRANSAC">
+     <property name="title">
+      <string>点云分割</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>image/ransac.png</normaloff>image/ransac.png</iconset>
+     </property>
+     <addaction name="action_Plane"/>
+     <addaction name="action_Line"/>
+     <addaction name="action_Circle2D"/>
+     <addaction name="action_Circle3D"/>
+     <addaction name="action_Sphere"/>
+     <addaction name="action_Cylinder"/>
+     <addaction name="action_Cone"/>
+     <addaction name="action_RegionGrow"/>
+     <addaction name="action_ECE"/>
+    </widget>
+    <widget class="QMenu" name="menu_8">
+     <property name="title">
+      <string>表面法线估计</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>image/Normal.png</normaloff>image/Normal.png</iconset>
+     </property>
+     <addaction name="action_Normal3D"/>
+     <addaction name="action_IntegralImage"/>
+    </widget>
+    <widget class="QMenu" name="menu_7">
+     <property name="title">
+      <string>配准</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>image/Register.png</normaloff>image/Register.png</iconset>
+     </property>
+     <addaction name="action_NDT"/>
+     <addaction name="action_ICP"/>
+    </widget>
+    <widget class="QMenu" name="menu_9">
+     <property name="title">
+      <string>曲面重建</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>image/surface.png</normaloff>image/surface.png</iconset>
+     </property>
+     <addaction name="action_Polygon"/>
+     <addaction name="action_GP3"/>
+    </widget>
+    <addaction name="action_pickPoints"/>
+    <addaction name="action_pickArea"/>
+    <addaction name="action_BOX3D"/>
+    <addaction name="menu_6"/>
+    <addaction name="menu_5"/>
+    <addaction name="menuRANSAC"/>
+    <addaction name="menu_8"/>
+    <addaction name="menu_7"/>
+    <addaction name="menu_9"/>
+    <addaction name="action_TemplateMatching"/>
+   </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="title">
+     <string>相机</string>
+    </property>
+    <addaction name="action_ZED"/>
+    <addaction name="action_Meck"/>
+   </widget>
+   <widget class="QMenu" name="menu_10">
+    <property name="title">
+     <string>设置</string>
+    </property>
+    <addaction name="action_BackgroudColor"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
+   <addaction name="menu_3"/>
+   <addaction name="menu_4"/>
+   <addaction name="menu_10"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>40</width>
+     <height>40</height>
+    </size>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>LeftToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_reset"/>
+   <addaction name="separator"/>
+   <addaction name="action_up"/>
+   <addaction name="separator"/>
+   <addaction name="action_bottom"/>
+   <addaction name="separator"/>
+   <addaction name="action_right"/>
+   <addaction name="separator"/>
+   <addaction name="action_left"/>
+   <addaction name="separator"/>
+   <addaction name="action_front"/>
+   <addaction name="separator"/>
+   <addaction name="action_back"/>
+   <addaction name="separator"/>
+   <addaction name="action_frontIso"/>
+   <addaction name="separator"/>
+   <addaction name="action_backIso"/>
+  </widget>
+  <action name="action_up">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/up.png</normaloff>image/up.png</iconset>
+   </property>
+   <property name="text">
+    <string>俯视图</string>
+   </property>
+  </action>
+  <action name="action_front">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/front.png</normaloff>image/front.png</iconset>
+   </property>
+   <property name="text">
+    <string>前视图</string>
+   </property>
+   <property name="font">
+    <font/>
+   </property>
+  </action>
+  <action name="action_left">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/left.png</normaloff>image/left.png</iconset>
+   </property>
+   <property name="text">
+    <string>左视图</string>
+   </property>
+   <property name="toolTip">
+    <string>左视图</string>
+   </property>
+  </action>
+  <action name="action_back">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/back.png</normaloff>image/back.png</iconset>
+   </property>
+   <property name="text">
+    <string>后视图</string>
+   </property>
+  </action>
+  <action name="action_right">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/right.png</normaloff>image/right.png</iconset>
+   </property>
+   <property name="text">
+    <string>右视图</string>
+   </property>
+  </action>
+  <action name="action_bottom">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/bottom.png</normaloff>image/bottom.png</iconset>
+   </property>
+   <property name="text">
+    <string>底视图</string>
+   </property>
+  </action>
+  <action name="action_open">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/open.jpeg</normaloff>image/open.jpeg</iconset>
+   </property>
+   <property name="text">
+    <string>打开</string>
+   </property>
+   <property name="font">
+    <font/>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="action_heightRamp">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/heightRamp.png</normaloff>image/heightRamp.png</iconset>
+   </property>
+   <property name="text">
+    <string>高度渲染</string>
+   </property>
+   <property name="shortcut">
+    <string/>
+   </property>
+  </action>
+  <action name="action_pickPoints">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/pickPoints.png</normaloff>image/pickPoints.png</iconset>
+   </property>
+   <property name="text">
+    <string>选点</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="action_frontIso">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/frontIso.png</normaloff>image/frontIso.png</iconset>
+   </property>
+   <property name="text">
+    <string>前轴测</string>
+   </property>
+  </action>
+  <action name="action_backIso">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/backIso.png</normaloff>image/backIso.png</iconset>
+   </property>
+   <property name="text">
+    <string>后轴测</string>
+   </property>
+  </action>
+  <action name="action_reset">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/reset.png</normaloff>image/reset.png</iconset>
+   </property>
+   <property name="text">
+    <string>重设视角</string>
+   </property>
+   <property name="toolTip">
+    <string>重设视角</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
+  </action>
+  <action name="action_setColor">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/color.png</normaloff>image/color.png</iconset>
+   </property>
+   <property name="text">
+    <string>点云颜色</string>
+   </property>
+  </action>
+  <action name="action_pickArea">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/pickArea.png</normaloff>image/pickArea.png</iconset>
+   </property>
+   <property name="text">
+    <string>选则区域</string>
+   </property>
+   <property name="toolTip">
+    <string>选则区域</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="action_save">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/save.png</normaloff>image/save.png</iconset>
+   </property>
+   <property name="text">
+    <string>保存</string>
+   </property>
+   <property name="toolTip">
+    <string>保存</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="action_saveO">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/saveO.png</normaloff>image/saveO.png</iconset>
+   </property>
+   <property name="text">
+    <string>另存为</string>
+   </property>
+   <property name="toolTip">
+    <string>另存为</string>
+   </property>
+  </action>
+  <action name="action_ZED">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/zed.jpg</normaloff>image/zed.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>ZED</string>
+   </property>
+   <property name="toolTip">
+    <string>ZED相机</string>
+   </property>
+  </action>
+  <action name="action_Meck">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/meck.png</normaloff>image/meck.png</iconset>
+   </property>
+   <property name="text">
+    <string>Meck</string>
+   </property>
+   <property name="toolTip">
+    <string>Meck相机</string>
+   </property>
+  </action>
+  <action name="action_PassThrough">
+   <property name="text">
+    <string>直通滤波</string>
+   </property>
+   <property name="toolTip">
+    <string>直通滤波</string>
+   </property>
+  </action>
+  <action name="action_VoxelGrid">
+   <property name="text">
+    <string>体素滤波</string>
+   </property>
+   <property name="toolTip">
+    <string>降采样</string>
+   </property>
+  </action>
+  <action name="action_RemoveOutliers">
+   <property name="text">
+    <string>离群点移除</string>
+   </property>
+   <property name="toolTip">
+    <string>离群点移除</string>
+   </property>
+  </action>
+  <action name="action_RadiusFilter">
+   <property name="text">
+    <string>半径滤波</string>
+   </property>
+   <property name="toolTip">
+    <string>半径滤波</string>
+   </property>
+  </action>
+  <action name="action_Projection">
+   <property name="text">
+    <string>投影</string>
+   </property>
+   <property name="toolTip">
+    <string>投影</string>
+   </property>
+  </action>
+  <action name="action_DepthMap">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/depthmap.png</normaloff>image/depthmap.png</iconset>
+   </property>
+   <property name="text">
+    <string>深度图</string>
+   </property>
+   <property name="toolTip">
+    <string>从点云创建深度图</string>
+   </property>
+  </action>
+  <action name="action_NARFKeyPoint">
+   <property name="text">
+    <string>NARF关键点</string>
+   </property>
+   <property name="toolTip">
+    <string>NARF关键点</string>
+   </property>
+  </action>
+  <action name="action_Plane">
+   <property name="text">
+    <string>平面</string>
+   </property>
+   <property name="toolTip">
+    <string>平面</string>
+   </property>
+  </action>
+  <action name="action_Line">
+   <property name="text">
+    <string>直线</string>
+   </property>
+   <property name="toolTip">
+    <string>直线</string>
+   </property>
+  </action>
+  <action name="action_Circle2D">
+   <property name="text">
+    <string>2D圆</string>
+   </property>
+   <property name="toolTip">
+    <string>2D圆</string>
+   </property>
+  </action>
+  <action name="action_Circle3D">
+   <property name="text">
+    <string>3D圆</string>
+   </property>
+   <property name="toolTip">
+    <string>3D圆</string>
+   </property>
+  </action>
+  <action name="action_Sphere">
+   <property name="text">
+    <string>球</string>
+   </property>
+   <property name="toolTip">
+    <string>球</string>
+   </property>
+  </action>
+  <action name="action_Cylinder">
+   <property name="text">
+    <string>圆柱体</string>
+   </property>
+  </action>
+  <action name="action_Cone">
+   <property name="text">
+    <string>圆锥体</string>
+   </property>
+  </action>
+  <action name="action_RegionGrow">
+   <property name="text">
+    <string>区域生长</string>
+   </property>
+   <property name="toolTip">
+    <string>区域生长</string>
+   </property>
+  </action>
+  <action name="action_PerpendicularPlane">
+   <property name="text">
+    <string>垂直平面</string>
+   </property>
+  </action>
+  <action name="action_NormalPlane">
+   <property name="text">
+    <string>法向平面</string>
+   </property>
+  </action>
+  <action name="action_NormalSphere">
+   <property name="text">
+    <string>法向球</string>
+   </property>
+  </action>
+  <action name="action_Registration">
+   <property name="text">
+    <string>配准模型</string>
+   </property>
+  </action>
+  <action name="action_Registration2D">
+   <property name="text">
+    <string>二维配准模型</string>
+   </property>
+  </action>
+  <action name="action_ParallelPlane">
+   <property name="text">
+    <string>平行平面</string>
+   </property>
+  </action>
+  <action name="action_NormalParallelPlane">
+   <property name="text">
+    <string>法向平行平面</string>
+   </property>
+  </action>
+  <action name="action_Stick">
+   <property name="text">
+    <string>棍模型</string>
+   </property>
+  </action>
+  <action name="action_Ellipse3D">
+   <property name="text">
+    <string>三维椭圆</string>
+   </property>
+  </action>
+  <action name="action_NormalSphere_2">
+   <property name="text">
+    <string>法向球</string>
+   </property>
+  </action>
+  <action name="action_Conditional">
+   <property name="text">
+    <string>条件滤波</string>
+   </property>
+  </action>
+  <action name="action_UniformSampling">
+   <property name="text">
+    <string>均匀采样</string>
+   </property>
+  </action>
+  <action name="action_UpSampling">
+   <property name="text">
+    <string>上采样</string>
+   </property>
+  </action>
+  <action name="action_Normal3D">
+   <property name="text">
+    <string>3D法线估计</string>
+   </property>
+  </action>
+  <action name="action_IntegralImage">
+   <property name="text">
+    <string>积分图法</string>
+   </property>
+  </action>
+  <action name="action_NDT">
+   <property name="text">
+    <string>正态分布变换配准(NDT)</string>
+   </property>
+  </action>
+  <action name="action_ICP">
+   <property name="text">
+    <string>迭代最近点(ICP)</string>
+   </property>
+  </action>
+  <action name="action_TemplateMatching">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/TemplateMatching.png</normaloff>image/TemplateMatching.png</iconset>
+   </property>
+   <property name="text">
+    <string>模板匹配</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+T</string>
+   </property>
+  </action>
+  <action name="action_ECE">
+   <property name="text">
+    <string>欧式聚类提取</string>
+   </property>
+  </action>
+  <action name="action_Polygon">
+   <property name="text">
+    <string>多边形拟合</string>
+   </property>
+  </action>
+  <action name="action_GP3">
+   <property name="text">
+    <string>三角化</string>
+   </property>
+  </action>
+  <action name="action_BOX3D">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/BOX3D.png</normaloff>image/BOX3D.png</iconset>
+   </property>
+   <property name="text">
+    <string>3D包容盒子</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+B</string>
+   </property>
+  </action>
+  <action name="action_Generate">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/generate.png</normaloff>image/generate.png</iconset>
+   </property>
+   <property name="text">
+    <string>从3D模型生成点云</string>
+   </property>
+  </action>
+  <action name="action_Depth2Cloud">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/depth2pcd.png</normaloff>image/depth2pcd.png</iconset>
+   </property>
+   <property name="text">
+    <string>从深度图生成点云</string>
+   </property>
+  </action>
+  <action name="action_BackgroudColor">
+   <property name="icon">
+    <iconset>
+     <normaloff>image/BackgroundColor.png</normaloff>image/BackgroundColor.png</iconset>
+   </property>
+   <property name="text">
+    <string>背景颜色</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QVTKOpenGLNativeWidget</class>
+   <extends>QWidget</extends>
+   <header>qvtkopenglnativewidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="PCLvision.qrc"/>
+  <include location="PCLvision.qrc"/>
+ </resources>
+ <connections/>
+</ui>
