@@ -1,8 +1,8 @@
-#pragma once
+ï»¿#pragma once
 
 #include <QWidget>
 #include "ui_ConditionalDlg.h"
-#include <pcl/filters/conditional_removal.h>     //Ìõ¼şÂË²¨Æ÷
+#include <pcl/filters/conditional_removal.h>     //æ¡ä»¶æ»¤æ³¢å™¨
 
 class ConditionalDlg : public QWidget
 {
@@ -13,10 +13,10 @@ public:
 	~ConditionalDlg();
 
 private slots:
-	//È·ÈÏ
+	//ç¡®è®¤
 	void on_btn_ok_clicked();
 
-	//È¡Ïû
+	//å–æ¶ˆ
 	void on_btn_cancel_clicked();
 
 signals:

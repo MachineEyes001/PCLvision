@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <QWidget>
 #include "ui_NARFKeyPointDlg.h"
@@ -16,13 +16,13 @@ public:
 	QString _far_ranges_pcd_path = "";
 
 private slots:
-	//È·ÈÏ
+	//ç¡®è®¤
 	void on_btn_ok_clicked();
 
-	//È¡Ïû
+	//å–æ¶ˆ
 	void on_btn_cancel_clicked();
 
-	// ä¯ÀÀ
+	// æµè§ˆ
 	void on_Browse_clicked();
 
 signals:

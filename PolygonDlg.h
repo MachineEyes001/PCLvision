@@ -1,8 +1,8 @@
-#pragma once
+ï»¿#pragma once
 
 #include <QWidget>
 #include "ui_PolygonDlg.h"
-#include <pcl/surface/concave_hull.h>                 //´´½¨°¼¶à±ßĞÎÀà¶¨ÒåÍ·ÎÄ¼ş
+#include <pcl/surface/concave_hull.h>                 //åˆ›å»ºå‡¹å¤šè¾¹å½¢ç±»å®šä¹‰å¤´æ–‡ä»¶
 
 class PolygonDlg : public QWidget
 {
@@ -13,10 +13,10 @@ public:
 	~PolygonDlg();
 
 private slots:
-	//È·ÈÏ
+	//ç¡®è®¤
 	void on_btn_ok_clicked();
 
-	//È¡Ïû
+	//å–æ¶ˆ
 	void on_btn_cancel_clicked();
 
 signals:

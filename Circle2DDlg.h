@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <QWidget>
 #include "ui_Circle2DDlg.h"
@@ -12,10 +12,10 @@ public:
 	~Circle2DDlg();
 
 private slots:
-	//È·ÈÏ
+	//ç¡®è®¤
 	void on_btn_ok_clicked();
 
-	//È¡Ïû
+	//å–æ¶ˆ
 	void on_btn_cancel_clicked();
 
 signals:

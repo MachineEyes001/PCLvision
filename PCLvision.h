@@ -7,6 +7,7 @@ VTK_MODULE_INIT(vtkInteractionStyle);
 #include <QtWidgets/QMainWindow>
 #include <QProcess>
 #include <QSettings>
+#include <QFileDialog>
 #include <QPlainTextEdit>
 #include "ui_PCLvision.h"
 #include <pcl/point_types.h>					//点云数据类型
@@ -89,6 +90,8 @@ public:
 
 	//选择区域--------------回调函数
 	void pickAreaCallback(const pcl::visualization::AreaPickingEvent& event, void* viewer_void);
+
+	void ShowCurrentCloud();
 
 public slots:
 	//打开点云
@@ -229,6 +232,8 @@ public:
 	//当前的点云
 	PointCloudT::Ptr m_currentCloud;
 	QString path = "";
+	QString zedpath = "";
+	QString meckpath = "";
 	PointCloudT::Ptr keypoints_ptr;
 
 private:

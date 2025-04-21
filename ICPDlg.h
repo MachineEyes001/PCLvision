@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <QWidget>
 #include "ui_ICPDlg.h"
@@ -27,14 +27,14 @@ public:
 	QString pathscene = "";
 
 private slots:
-	//È·ÈÏ
+	//ç¡®è®¤
 	void on_btn_ok_clicked();
 
-	//È¡Ïû
+	//å–æ¶ˆ
 	void on_btn_cancel_clicked();
-	// ä¯ÀÀ
+	// æµè§ˆ
 	void on_BrowseTarget_clicked();
-	// ä¯ÀÀ
+	// æµè§ˆ
 	void on_BrowseScene_clicked();
 
 signals:

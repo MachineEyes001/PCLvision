@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <QWidget>
 #include "ui_BOX3DDlg.h"
@@ -14,10 +14,10 @@ public:
 	~BOX3DDlg();
 
 private slots:
-	//È·ÈÏ
+	//ç¡®è®¤
 	void on_btn_ok_clicked();
 
-	//È¡Ïû
+	//å–æ¶ˆ
 	void on_btn_cancel_clicked();
 
 	void on_BOXtype_currentIndexChanged(int nIndex);

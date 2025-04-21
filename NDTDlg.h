@@ -1,10 +1,10 @@
-#pragma once
+ï»¿#pragma once
 
 #include <QWidget>
 #include "ui_NDTDlg.h"
-//Ê¹ÓÃ¡¾ÕıÌ¬·Ö²¼±ä»»Ëã·¨¡¿ºÍ¡¾ÓÃÀ´¹ıÂËÊı¾İµÄ¹ıÂËÆ÷¡¿¶ÔÓ¦µÄÍ·ÎÄ¼ş£¬Õâ¸ö¹ıÂËÆ÷¿ÉÒÔÓÃÆäËû¹ıÂËÆ÷À´Ìæ»», 
-//µ«ÊÇÊ¹ÓÃÌåËØÍø¸ñ¹ıÂËÆ÷(approximate voxel filter)´¦Àí½á¹û½ÏºÃ
-#include <pcl/registration/ndt.h> // ndtÅä×¼Í·ÎÄ¼ş
+//ä½¿ç”¨ã€æ­£æ€åˆ†å¸ƒå˜æ¢ç®—æ³•ã€‘å’Œã€ç”¨æ¥è¿‡æ»¤æ•°æ®çš„è¿‡æ»¤å™¨ã€‘å¯¹åº”çš„å¤´æ–‡ä»¶ï¼Œè¿™ä¸ªè¿‡æ»¤å™¨å¯ä»¥ç”¨å…¶ä»–è¿‡æ»¤å™¨æ¥æ›¿æ¢, 
+//ä½†æ˜¯ä½¿ç”¨ä½“ç´ ç½‘æ ¼è¿‡æ»¤å™¨(approximate voxel filter)å¤„ç†ç»“æœè¾ƒå¥½
+#include <pcl/registration/ndt.h> // ndté…å‡†å¤´æ–‡ä»¶
 #include <pcl/filters/approximate_voxel_grid.h>
 
 class NDTDlg : public QWidget
@@ -19,14 +19,14 @@ public:
 	QString pathscene = "";
 
 private slots:
-	//È·ÈÏ
+	//ç¡®è®¤
 	void on_btn_ok_clicked();
 
-	//È¡Ïû
+	//å–æ¶ˆ
 	void on_btn_cancel_clicked();
-	// ä¯ÀÀ
+	// æµè§ˆ
 	void on_BrowseTarget_clicked();
-	// ä¯ÀÀ
+	// æµè§ˆ
 	void on_BrowseScene_clicked();
 
 signals:

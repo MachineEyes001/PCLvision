@@ -1,8 +1,8 @@
-#pragma once
+ï»¿#pragma once
 
 #include <QWidget>
 #include "ui_GP3Dlg.h"
-#include <pcl/surface/gp3.h>      //Ì°À·Í¶Ó°Èı½Ç»¯Ëã·¨
+#include <pcl/surface/gp3.h>      //è´ªå©ªæŠ•å½±ä¸‰è§’åŒ–ç®—æ³•
 
 class GP3Dlg : public QWidget
 {
@@ -13,10 +13,10 @@ public:
 	~GP3Dlg();
 
 private slots:
-	//È·ÈÏ
+	//ç¡®è®¤
 	void on_btn_ok_clicked();
 
-	//È¡Ïû
+	//å–æ¶ˆ
 	void on_btn_cancel_clicked();
 
 signals:

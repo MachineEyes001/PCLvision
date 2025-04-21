@@ -1,9 +1,9 @@
-#pragma once
+ï»¿#pragma once
 
 #include <QWidget>
 #include "ui_ProjectionDlg.h"
-#include <pcl/ModelCoefficients.h>             //Ä£ĞÍÏµÊıÍ·ÎÄ¼ş
-#include <pcl/filters/project_inliers.h>       //Í¶Ó°ÂË²¨ÀàÍ·ÎÄ¼ş
+#include <pcl/ModelCoefficients.h>             //æ¨¡å‹ç³»æ•°å¤´æ–‡ä»¶
+#include <pcl/filters/project_inliers.h>       //æŠ•å½±æ»¤æ³¢ç±»å¤´æ–‡ä»¶
 
 class ProjectionDlg : public QWidget
 {
@@ -14,10 +14,10 @@ public:
 	~ProjectionDlg();
 
 private slots:
-	//È·ÈÏ
+	//ç¡®è®¤
 	void on_btn_ok_clicked();
 
-	//È¡Ïû
+	//å–æ¶ˆ
 	void on_btn_cancel_clicked();
 
 signals:

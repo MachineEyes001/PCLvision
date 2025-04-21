@@ -1,5 +1,4 @@
 ﻿#include "PCLvision.h"
-#include <QFileDialog>
 #include <QFile>
 #include <QMessageBox>
 #include <QColorDialog>
@@ -10,11 +9,28 @@ PCLvision::PCLvision(QWidget *parent)
 {
     ui.setupUi(this);
 
+	// 读取上一次保存的值
+	QSettings settings("MyCPvisionsetting", QSettings::IniFormat);
+	QString zedpathValue = settings.value("zedpathValue").toString();
+	if (!zedpathValue.isEmpty())
+	{
+		zedpath = zedpathValue;
+	}
+	QString meckpathValue = settings.value("meckpathValue").toString();
+	if (!meckpathValue.isEmpty())
+	{
+		meckpath = meckpathValue;
+	}
+
     //初始化
     init();
 }
 PCLvision::~PCLvision()
 {
+	// 保存当前输入的值
+	QSettings settings("MyCPvisionsetting", QSettings::IniFormat);
+	settings.setValue("zedpathValue", zedpath);
+	settings.setValue("meckpathValue", meckpath);
 }
 void PCLvision::closeEvent(QCloseEvent* event)
 {
@@ -595,15 +611,22 @@ void PCLvision::on_action_pickArea_triggered()
 //ZED相机
 void PCLvision::on_action_ZED_triggered()
 {
-	QString program = "C:/Program Files (x86)/ZED SDK/tools/ZED Depth Viewer.exe"; // 替换为你的exe程序路径
-	QProcess::startDetached(program);
-	
+	if (zedpath.isEmpty())
+	{
+		zedpath = QFileDialog::getOpenFileName(this, "选择相机SDK", ".//", "ZEDSDK(*.exe);;所有文件(*.*)");
+
+	}
+	QProcess::startDetached(zedpath);
 }
 //Meck相机
 void PCLvision::on_action_Meck_triggered()
 {
-	QString program = "D:/meck-eye/Mech-Eye SDK-2.0.2/Mech-Eye Viewer.exe"; // 替换为你的exe程序路径
-	QProcess::startDetached(program);
+	if (meckpath.isEmpty())
+	{
+		meckpath = QFileDialog::getOpenFileName(this, "选择相机SDK", ".//", "MECKSDK(*.exe);;所有文件(*.*)");
+
+	}
+	QProcess::startDetached(meckpath);
 }
 //滤波
 void PCLvision::on_action_PassThrough_triggered()
@@ -2284,9 +2307,9 @@ void PCLvision::BOX3D(int BOXtype, int show)
 		// max_point_OBB.y - min_point_OBB.y  高度
 		// max_point_OBB.z - min_point_OBB.z  深度
 		text += "\n";
-		text += QString("    | %6.3 %6.3 %6.3 | \n").arg(rotational_matrix_OBB(0, 0)).arg(rotational_matrix_OBB(0, 1)).arg(rotational_matrix_OBB(0, 2));
-		text += QString("R = | %6.3 %6.3 %6.3 | \n").arg(rotational_matrix_OBB(1, 0)).arg(rotational_matrix_OBB(1, 1)).arg(rotational_matrix_OBB(1, 2));
-		text += QString("    | %6.3 %6.3 %6.3 | \n").arg(rotational_matrix_OBB(2, 0)).arg(rotational_matrix_OBB(2, 1)).arg(rotational_matrix_OBB(2, 2));
+		text += QString("\t[%1\t%2\t%3\t] \n").arg(rotational_matrix_OBB(0, 0)).arg(rotational_matrix_OBB(0, 1)).arg(rotational_matrix_OBB(0, 2));
+		text += QString("R=\t[%1\t%2\t%3\t] \n").arg(rotational_matrix_OBB(1, 0)).arg(rotational_matrix_OBB(1, 1)).arg(rotational_matrix_OBB(1, 2));
+		text += QString("\t[%1\t%2\t%3\t] \n \n").arg(rotational_matrix_OBB(2, 0)).arg(rotational_matrix_OBB(2, 1)).arg(rotational_matrix_OBB(2, 2));
 		text += "长(x): ";
 		text += QString("%1 \n").arg(max_point_OBB.x - min_point_OBB.x);
 		text += "宽(y): ";
@@ -2340,7 +2363,7 @@ void PCLvision::BOX3D(int BOXtype, int show)
 
 	ui.qvtkWidget->update();
 
-	text += QString("质心(  %1 , %2 , %3 ) \n").arg(mass_center(0)).arg(mass_center(1)).arg(mass_center(2));
+	text += QString("质心( %1 , %2 , %3 ) \n").arg(mass_center(0)).arg(mass_center(1)).arg(mass_center(2));
 	text += "\n";
 
 	ui.infoTextEdit->appendPlainText(text);
@@ -2397,16 +2420,16 @@ void PCLvision::TemplateMatching()
 	Eigen::Vector3f euler_angles = rotation.eulerAngles(2, 1, 0) * 180 / M_PI;
 
 	text += "\n";
-	text += QString("    | %6.3 %6.3 %6.3 | \n").arg(rotation(0, 0)).arg(rotation(0, 1)).arg(rotation(0, 2));
-	text += QString("R = | %6.3 %6.3 %6.3 | \n").arg(rotation(1, 0)).arg(rotation(1, 1)).arg(rotation(1, 2));
-	text += QString("    | %6.3 %6.3 %6.3 | \n").arg(rotation(2, 0)).arg(rotation(2, 1)).arg(rotation(2, 2));
+	text += QString("    | %1 %2 %3 | \n").arg(rotation(0, 0)).arg(rotation(0, 1)).arg(rotation(0, 2));
+	text += QString("R = | %1 %2 %3 | \n").arg(rotation(1, 0)).arg(rotation(1, 1)).arg(rotation(1, 2));
+	text += QString("    | %1 %2 %3 | \n").arg(rotation(2, 0)).arg(rotation(2, 1)).arg(rotation(2, 2));
 	text += "\n";
 	text += "yaw(z) pitch(y) roll(x) = ";
 	text += QString::number(euler_angles[0]) + ", ";
 	text += QString::number(euler_angles[1]) + ", ";
 	text += QString::number(euler_angles[2]) + "\n";
 	text += "\n";
-	text += QString("t = < %0.3, %0.3, %0.3 >\n").arg(translation(0)).arg(translation(1)).arg(translation(2));
+	text += QString("t = < %1, %2, %3 >\n").arg(translation(0)).arg(translation(1)).arg(translation(2));
 	text += "\n";
 	text += "白色-目标点云\n红色-模板点云\n蓝色-旋转后点云\n";
 
@@ -2566,6 +2589,36 @@ void PCLvision::Depth2Cloud()
 	//添加到窗口
 	*m_currentCloud = *mycloud;
 	m_currentCloud->resize(mycloud->width);
+	viewer->addPointCloud(m_currentCloud);
+	pcl::getMinMax3D(*m_currentCloud, p_min, p_max);
+
+	double scale = getMinValue(p_max, p_min);
+	maxLen = getMaxValue(p_max, p_min);
+
+	//重设视角
+	viewer->resetCamera();
+
+	//刷新窗口
+	ui.qvtkWidget->update();
+
+	if (!m_currentCloud->empty())
+	{
+		int Cloudnum = m_currentCloud->width;
+		QString view = "0 0 0 1 0 0 0";
+		QString Pnum = QString::number(Cloudnum);
+		edit_num->setText(Pnum);
+		edit_vie->setText(view);
+	}
+
+	SB->showMessage("              ");
+}
+//显示当前处理点云
+void PCLvision::ShowCurrentCloud()
+{
+	viewer->removeAllPointClouds();
+	viewer->removeAllShapes();
+
+	//添加到窗口
 	viewer->addPointCloud(m_currentCloud);
 	pcl::getMinMax3D(*m_currentCloud, p_min, p_max);
 

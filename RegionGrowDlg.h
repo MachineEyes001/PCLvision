@@ -1,8 +1,8 @@
-#pragma once
+ï»¿#pragma once
 
 #include <QWidget>
 #include "ui_RegionGrowDlg.h"
-#include <pcl/segmentation/region_growing.h>//ÇøÓòÔö³¤µãÔÆ·Ö¸îËã·¨
+#include <pcl/segmentation/region_growing.h>//åŒºåŸŸå¢é•¿ç‚¹äº‘åˆ†å‰²ç®—æ³•
 
 class RegionGrowDlg : public QWidget
 {
@@ -13,10 +13,10 @@ public:
 	~RegionGrowDlg();
 
 private slots:
-	//È·ÈÏ
+	//ç¡®è®¤
 	void on_btn_ok_clicked();
 
-	//È¡Ïû
+	//å–æ¶ˆ
 	void on_btn_cancel_clicked();
 
 signals:

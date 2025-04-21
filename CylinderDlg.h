@@ -1,10 +1,10 @@
-#pragma once
+ï»¿#pragma once
 
 #include <QWidget>
 #include "ui_CylinderDlg.h"
-#include <pcl/sample_consensus/method_types.h>//Ä£ĞÍ¶¨ÒåÍ·ÎÄ¼ş
-#include <pcl/sample_consensus/model_types.h>//Ëæ»ú²ÎÊı¹À¼Æ·½·¨Í·ÎÄ¼ş
-#include <pcl/segmentation/sac_segmentation.h>//»ùÓÚ²ÉÑùÒ»ÖÂĞÔ·Ö¸îµÄÀàµÄÍ·ÎÄ¼ş
+#include <pcl/sample_consensus/method_types.h>//æ¨¡å‹å®šä¹‰å¤´æ–‡ä»¶
+#include <pcl/sample_consensus/model_types.h>//éšæœºå‚æ•°ä¼°è®¡æ–¹æ³•å¤´æ–‡ä»¶
+#include <pcl/segmentation/sac_segmentation.h>//åŸºäºé‡‡æ ·ä¸€è‡´æ€§åˆ†å‰²çš„ç±»çš„å¤´æ–‡ä»¶
 #include <pcl/features/normal_3d.h>
 
 class CylinderDlg : public QWidget
@@ -16,10 +16,10 @@ public:
 	~CylinderDlg();
 
 private slots:
-	//È·ÈÏ
+	//ç¡®è®¤
 	void on_btn_ok_clicked();
 
-	//È¡Ïû
+	//å–æ¶ˆ
 	void on_btn_cancel_clicked();
 
 signals:

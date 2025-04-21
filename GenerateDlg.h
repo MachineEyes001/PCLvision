@@ -1,11 +1,11 @@
-#pragma once
+ï»¿#pragma once
 
 #include <QWidget>
 #include "ui_GenerateDlg.h"
 #include <pcl/io/obj_io.h>
 #include <pcl/io/ply_io.h>
 #include <pcl/PolygonMesh.h>
-#include <pcl/io/vtk_lib_io.h>//loadPolygonFileOBJËùÊôÍ·ÎÄ¼ş
+#include <pcl/io/vtk_lib_io.h>//loadPolygonFileOBJæ‰€å±å¤´æ–‡ä»¶
 #include <pcl/visualization/pcl_visualizer.h>
 #include <pcl/io/pcd_io.h>
 #include <pcl/common/transforms.h>
@@ -117,10 +117,10 @@ public:
 
 
 private slots:
-	//È·ÈÏ
+	//ç¡®è®¤
 	void on_btn_ok_clicked();
 
-	//È¡Ïû
+	//å–æ¶ˆ
 	void on_btn_cancel_clicked();
 
 	void on_Browse_clicked();
